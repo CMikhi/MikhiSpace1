@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-
+import CircularText from './components/CircularText';
 import './App.css'
 
 function App() {
@@ -20,8 +20,20 @@ function App() {
   return (
     <>
       <div className="w-screen h-screen bg-medium-light-red flex justify-center items-center">
-        <h1 ref={titleRef} className='text-off-white text-5xl font-bold'>hello, Im Chloe</h1>
+        <div ref={titleRef}>
+          <h1 className='text-off-white text-5xl font-bold'>hello, Im Chloe</h1>
+          <img className="w-7/8" src="src/assets/image 1.svg" alt="personalImage1"/>
+
+          <CircularText 
+              text="Student • Developer • Designer • Creator • " 
+              radius={240}
+              fontSize="4xl"
+              textColor="text-white"
+              animationDuration={40000}/>
+
+        </div>
       </div>
+      
     </>
   )
 }
