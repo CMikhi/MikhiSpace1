@@ -29,7 +29,7 @@ function App() {
           
 
         </div>
-        <div className='absolute transform translate-y-2/8 text-off-white'>
+        <div  className='absolute transform translate-y-2/8 text-off-white'>
           <CircularText 
               words={[
                 { text: 'Student', font: 'Inter', fontSize: '3xl' },

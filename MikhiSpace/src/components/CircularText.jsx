@@ -9,6 +9,7 @@ const CircularText = ({
   animationDuration = 6000
 }) => {
   const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   // Map fontSize class to actual pixel value for SVG
   const fontSizeMap = {
@@ -133,13 +134,24 @@ const CircularText = ({
     `;
     document.head.appendChild(style);
 
+    // Apply fade-in animation using anime.js
+    if (wrapperRef.current && window.anime) {
+      window.anime({
+        targets: wrapperRef.current,
+        opacity: [0, 1],
+        translateY: [-50, 0],
+        duration: 2500,
+        easing: 'easeOutExpo'
+      });
+    }
+
     return () => {
       document.head.removeChild(style);
     };
   }, [text, words, radius, fontSize, textColor, animationDuration, fontSizeValue, colorValue, getCharactersWithStyle]);
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div ref={wrapperRef} className="flex items-center justify-center w-full">
       <div ref={containerRef} />
     </div>
   );
