@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 
 const CircularText = ({ 
   text = 'circular text circular text', 
+  words = null,
   radius = 120,
   fontSize = 'text-lg',
   textColor = 'text-white',
@@ -16,9 +17,9 @@ const CircularText = ({
     'text-base': 16,
     'text-lg': 18,
     'text-xl': 20,
-    '2xl': 24,
-    '3xl': 30,
-    '4xl': 36
+    '2xl': 75,
+    '3xl': 85,
+    '4xl':95
   };
 
   const fontSizeValue = fontSizeMap[fontSize] || 18;
@@ -33,16 +34,46 @@ const CircularText = ({
     'text-yellow-500': 'rgb(234, 179, 8)',
     'text-purple-500': 'rgb(168, 85, 247)',
     'text-pink-500': 'rgb(236, 72, 153)',
+    'text-off-white': '#D5D5D5'
   };
 
   const colorValue = colorMap[textColor] || 'rgb(255, 255, 255)';
 
+  // Convert words array to character array with styling info
+  const getCharactersWithStyle = () => {
+    if (words && Array.isArray(words)) {
+      const charArray = [];
+      words.forEach((wordObj) => {
+        const wordText = wordObj.text || '';
+        const styles = {
+          font: wordObj.font || 'Arial',
+          fontSize: fontSizeMap[wordObj.fontSize] || fontSizeValue,
+          textColor: colorMap[wordObj.textColor] || colorValue
+        };
+        wordText.split('').forEach((char) => {
+          charArray.push({ char, ...styles });
+        });
+        // Add space between words
+        charArray.push({ char: ' ', ...styles });
+      });
+      return charArray;
+    } else {
+      // Fallback to simple character array
+      return text.split('').map(char => ({
+        char,
+        font: 'Arial',
+        fontSize: fontSizeValue,
+        textColor: colorValue
+      }));
+    }
+  };
+
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Split text into individual characters
-    const characters = text.split('');
-    const angleSlice = 360 / characters.length;
+    // Get characters with styling information
+    const charactersWithStyle = getCharactersWithStyle();
+    const angleSlice = 360 / charactersWithStyle.length;
 
     // Clear existing content
     containerRef.current.innerHTML = '';
@@ -59,7 +90,7 @@ const CircularText = ({
     g.setAttribute('id', 'rotatingText');
 
     // Create text elements positioned around the circle
-    characters.forEach((char, index) => {
+    charactersWithStyle.forEach((charObj, index) => {
       const angle = (angleSlice * index);
       const x = radius * Math.cos((angle - 90) * Math.PI / 180);
       const y = radius * Math.sin((angle - 90) * Math.PI / 180);
@@ -67,13 +98,14 @@ const CircularText = ({
       const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       text.setAttribute('x', x);
       text.setAttribute('y', y);
-      text.setAttribute('font-size', fontSizeValue);
-      text.setAttribute('fill', colorValue);
+      text.setAttribute('font-size', charObj.fontSize);
+      text.setAttribute('fill', charObj.textColor);
+      text.setAttribute('font-family', charObj.font);
       text.setAttribute('text-anchor', 'middle');
       text.setAttribute('dominant-baseline', 'middle');
       text.setAttribute('font-weight', 'bold');
       text.setAttribute('transform', `rotate(${angle}, ${x}, ${y})`);
-      text.textContent = char === ' ' ? '\u00A0' : char;
+      text.textContent = charObj.char === ' ' ? '\u00A0' : charObj.char;
 
       g.appendChild(text);
     });
@@ -104,7 +136,7 @@ const CircularText = ({
     return () => {
       document.head.removeChild(style);
     };
-  }, [text, radius, fontSize, textColor, animationDuration, fontSizeValue, colorValue]);
+  }, [text, words, radius, fontSize, textColor, animationDuration, fontSizeValue, colorValue, getCharactersWithStyle]);
 
   return (
     <div className="flex items-center justify-center w-full">
