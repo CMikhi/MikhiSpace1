@@ -53,7 +53,7 @@ function HomePage() {
         {/* ============================== */}
         {/* =        Circular Text       = */}
         {/* ============================== */}
-        <div className='absolute transform translate-y-1/10 text-off-white'>
+        <div className='absolute transform translate-y-1/10 text-off-white pointer-events-none'>
           <CircularText 
             words={[
               { text: 'Student', font: 'Inter', fontSize: '3xl' },
