@@ -66,7 +66,7 @@ function ProjectsPage() {
             mikhiRef.current.textContent = mikhiText.substring(0, charCount)
           }
         },
-        delay: 1500
+        delay: 1000
       }))
     }
 
@@ -77,7 +77,7 @@ function ProjectsPage() {
       animations.push(window.anime({
         targets: { progress: 0 },
         progress: [0, bioText.length],
-        duration: 4000,
+        duration: 2000,
         easing: 'linear',
         round: 1,
         update: function(anim) {
@@ -86,7 +86,7 @@ function ProjectsPage() {
             bioRef.current.textContent = bioText.substring(0, charCount)
           }
         },
-        delay: 2500
+        delay: 1500
       }))
     }
 
