@@ -6,6 +6,8 @@ function ProjectsPage() {
   const chloeRef = useRef(null)
   const mikhiRef = useRef(null)
   const bioRef = useRef(null)
+  const paperRef = useRef(null)
+  const personalImageRef = useRef(null)
 
   useEffect(() => {
     const animations = []
@@ -90,6 +92,32 @@ function ProjectsPage() {
       }))
     }
 
+    // Floating animation for paper
+    if (paperRef.current && window.anime) {
+      animations.push(window.anime({
+        targets: paperRef.current,
+        translateY: [-10, 10],
+        rotate: [-5, 5],
+        duration: 3000,
+        easing: 'easeInOutSine',
+        direction: 'alternate',
+        loop: true
+      }))
+    }
+
+    // Floating animation for personal image (slightly offset timing)
+    if (personalImageRef.current && window.anime) {
+      animations.push(window.anime({
+        targets: personalImageRef.current,
+        translateY: [10, -10],
+        rotate: [5, -5],
+        duration: 3500,
+        easing: 'easeInOutSine',
+        direction: 'alternate',
+        loop: true
+      }))
+    }
+
     // Cleanup animations on unmount
     return () => {
       animations.forEach(anim => anim && anim.pause())
@@ -97,56 +125,82 @@ function ProjectsPage() {
   }, [])
 
   return (
-    <div>
-        <div className="w-screen h-screen bg-off-white text-dark-red flex justify-between">
-        <div className='w-3 h-15 left-40 bg-dark-red absolute'></div>
-        <div className='w-3 h-35 left-140 bg-dark-red absolute'></div>
-        <div className="ml-25 mt-20 w-150">
+    <div className="min-h-screen overflow-y-auto">
+      <div className="relative w-screen min-h-screen bg-off-white text-dark-red flex justify-between">
+        {/* Design Elements (lines) */}
+      <div className='w-3 h-15 left-40 bg-dark-red absolute'></div>
+      <div className='w-3 h-35 left-140 bg-dark-red absolute'></div>
+
+
+      <div className="mt-20 ">
+
+        
+        {/* Who am I text */}
+        <div className='ml-25 w-150'>
           
-          <h2 ref={whoAmIRef} className="font-[Keania_One] text-[30px]"></h2>
-          <div className="flex font-[Keania_One] text-medium-dark-red">
-            <h1 ref={chloeRef} className="mr-2 text-[50px]"></h1>
-            <h3 ref={mikhiRef} className="mt-4 text-[35px]"></h3>
-          </div>
-          <div className='w-full h-1 bg-dark-red my-4'></div>
-          <h2 ref={bioRef} className="font-[Kdam_Thmor_Pro] text-2xl min-h-[65px]"></h2>
+        <h2 ref={whoAmIRef} className="font-[Keania_One] text-[30px]"></h2>
+        <div className="flex font-[Keania_One] text-medium-dark-red">
+
+        
+        <h1 ref={chloeRef} className="mr-2 text-[50px]"></h1>
+        <h3 ref={mikhiRef} className="mt-4 text-[35px]"></h3>
+        </div>
+
+
+
+        {/* Divider */}
+        <div className='w-full h-1 bg-dark-red my-4'></div>
+
+        {/* Bio text */}
+        <h2 ref={bioRef} className="font-[Kdam_Thmor_Pro] text-2xl min-h-[65px]"></h2>
+        </div>
+
+
+        {/* Design Elements (lines) */}
+        <div className=''>
           <div className='w-3 mt-10 h-40 left-40 bg-dark-red my-4 absolute'></div>
           <div className='w-3 mt-10 h-40 left-140 bg-dark-red absolute'></div>
-          
-          <img className="pt-3 absolute top-3/7 left-20" src="src/assets/Hobbies File.svg" alt="Hobbies File"/>
-
-        
         </div>
         
 
-        
 
-        <div className="relative mr-25 flex flex-col ">
-          {/* <div>
+        {/* Hobby Files*/}
+        {/* Figure out how to make this functional */}
+        <img className="pt-3 absolute top-3/7 ml-20" src="src/assets/Hobbies File.svg" alt="Hobbies File"/>
+      
+      </div>
+      
 
-            <div className='z-20 w-2 h-40  bg-dark-red absolute top-0 rotate-5'></div>
-            
-            <
-          </div> */}
-          <div className='w-150 h-160 mt-15 bg-medium-light-red rounded-xl transform -rotate-5 flex drop-shadow-xl/25'></div>
-          <div className='w-3 h-40 left-1/2 bg-dark-red absolute top-0 '></div>
-          <img className='w-134 left-10 mt-20 absolute ml-4 transform  drop-shadow-xl/25' src='src/assets/CrumpledPaper.svg' alt='Crumpled Paper'/>
-          <img className="z-40 absolute transform left-10 drop-shadow-xl/25" src="src/assets/image 2.svg" alt="personalImage2" />
-            
-          
-          <div className="absolute bottom-10 right-10 transform -rotate-5 text-2xl text-dark-red font-[Jua] ">
-            <h1>Wanna yap?</h1>
-            <h1 className="ml-2 ">Contact me here!</h1>
-          </div>
+      
 
+      <div className="relative mr-25 flex flex-col ">
+        {/* Red Block BG */}
+        <div className='z-10 w-150 h-160 mt-15 bg-medium-light-red rounded-xl transform -rotate-5 flex drop-shadow-xl/25'></div>
+        <div className='z-20 w-3 h-40 left-1/2 bg-dark-red absolute top-0 '></div>
+
+        {/* Floating image */}
+        <div id="floatingItems" className='z-30 absolute left-0 w-full h-full'>
+          {/* Paper photo */}
+          <img ref={paperRef} className='w-134 left-10 mt-20 absolute ml-4 transform  drop-shadow-xl/25' src='src/assets/CrumpledPaper.svg' alt='Crumpled Paper'/>
+
+          {/* Personal Image */}
+          <img ref={personalImageRef} className="z-40 absolute transform left-10 drop-shadow-xl/25" src="src/assets/image 2.svg" alt="personalImage2" />
         </div>
         
+        {/* Contact me memo */}
+        <div className="z-20 absolute bottom-10 right-10 transform -rotate-5 text-2xl text-dark-red font-[Jua] ">
+        <h1>Wanna yap?</h1>
+        <h1 className="ml-2 ">Contact me here!</h1>
+        </div>
+
+      </div>
+      
       </div>
 
       
     </div>
     
-  )
+    )
 }
 
 export default ProjectsPage
