@@ -20,10 +20,11 @@ function HomePage() {
 
     // Typing animation for h1
     const fullText = "Hello, I'm Chloe!"
+    let typingAnimation = null
     if (h1Ref.current && window.anime) {
       h1Ref.current.textContent = ''
       
-      window.anime({
+      typingAnimation = window.anime({
         targets: { progress: 0 },
         progress: [0, fullText.length],
         duration: 8000,
@@ -31,16 +32,93 @@ function HomePage() {
         round: 1,
         update: function(anim) {
           const charCount = Math.round(anim.progress)
-          h1Ref.current.textContent = fullText.substring(0, charCount)
+          if (h1Ref.current) {
+            h1Ref.current.textContent = fullText.substring(0, charCount)
+          }
         },
         delay: 300
       })
+    }
+
+    // Cleanup animation on unmount
+    return () => {
+      if (typingAnimation) {
+        typingAnimation.pause()
+      }
+    }
+  }, [])
+
+  const clickMeRef = useRef(null)
+  const circularTextRef = useRef(null)
+
+  useEffect(() => {
+    if (titleRef.current && window.anime) {
+      window.anime({
+        targets: titleRef.current,
+        opacity: [0, 1],
+        translateY: [-50, 0],
+        duration: 2500,
+        easing: 'easeOutExpo'
+      })
+    }
+
+    if (clickMeRef.current && window.anime) {
+      window.anime({
+        targets: clickMeRef.current,
+        opacity: [0, 1],
+        duration: 2500,
+        easing: 'easeOutExpo',
+        delay: 600
+      })
+    }
+
+    if (circularTextRef.current && window.anime) {
+      window.anime({
+        targets: circularTextRef.current,
+        opacity: [0, 1],
+        duration: 2500,
+        easing: 'easeOutExpo',
+        delay: 500
+      })
+    }
+
+    // Typing animation for h1
+    const fullText = "Hello, I'm Chloe!"
+    let typingAnimation = null
+    if (h1Ref.current && window.anime) {
+      h1Ref.current.textContent = ''
+      
+      typingAnimation = window.anime({
+        targets: { progress: 0 },
+        progress: [0, fullText.length],
+        duration: 8000,
+        easing: 'linear',
+        round: 1,
+        update: function(anim) {
+          const charCount = Math.round(anim.progress)
+          if (h1Ref.current) {
+            h1Ref.current.textContent = fullText.substring(0, charCount)
+          }
+        },
+        delay: 500
+      })
+    }
+
+    // Cleanup animation on unmount
+    return () => {
+      if (typingAnimation) {
+        typingAnimation.pause()
+      }
     }
   }, [])
 
   return (
     <>
       <div className="w-screen h-screen overflow-hidden bg-medium-light-red flex justify-center bottom-0">
+        <div ref={clickMeRef} className='absolute flex left-1/4 top-1/3 -translate-x-1/2 -translate-y-1/2 font-[Jua]'>
+          <h1 className='transform -rotate-40 w-50 text-3xl text-off-white'>Click me!</h1>
+          <img className="-translate-x-3/4 " src="src/assets/Arrow1.svg" alt="Click Me Arrow" />
+        </div>
 
         <div ref={titleRef} className="text-center">
           <h1 ref={h1Ref} className='text-off-white text-4xl font-[Kiwi_Maru] mt-8'></h1>
@@ -53,7 +131,7 @@ function HomePage() {
         {/* ============================== */}
         {/* =        Circular Text       = */}
         {/* ============================== */}
-        <div className='absolute transform translate-y-1/10 text-off-white pointer-events-none'>
+        <div ref={circularTextRef} className='absolute transform translate-y-1/10 text-off-white pointer-events-none'>
           <CircularText 
             words={[
               { text: 'Student', font: 'Inter', fontSize: '3xl' },
