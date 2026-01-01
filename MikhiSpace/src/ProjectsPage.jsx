@@ -147,12 +147,49 @@ function ProjectsPage() {
         </div>
       </div>
 
-      {/* Bottom design line */}
-      <div className="w-screen h-20 bg-medium-dark-red"></div>
-
+      {/* Bottom design line - Scrolling marquee */}
+        <div className="w-screen h-20 bg-medium-dark-red overflow-hidden">
+          <div 
+            className="flex gap-[35px] items-center h-full pl-[35px]"
+            style={{
+              animation: 'marquee 50s linear infinite',
+              width: 'max-content',
+            }}
+          >
+            {/* Repeat icons 4 times to ensure full coverage */}
+            {[...Array(4)].map((_, setIndex) => (
+              <div key={setIndex} className="flex gap-[35px] items-center">
+                <img src="src/assets/AppIcons/React.svg" alt="React" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Swift.svg" alt="Swift" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Tailwind.svg" alt="Tailwind" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/VSCode.svg" alt="VS Code" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Next.svg" alt="Next.js" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Python.svg" alt="Python" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Blender.svg" alt="Blender" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/AdobeIll.svg" alt="Adobe Illustrator" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Github.svg" alt="Github" className="w-12 h-12 flex-shrink-0" />
+                <img src="src/assets/AppIcons/Figma.svg" alt="Figma" className="w-12 h-12 flex-shrink-0" />
+              </div>
+            ))}
+          </div>
+          <style>{`
+            @keyframes marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}</style>
+        </div>
 
       <div className="relative w-screen min-h-screen bg-medium-light-red"> 
-
+        <div>
+          <h1 
+            className="pt-40 text-8xl font-[Keania_One] text-off-white"
+            style={{ textShadow: '-8px 8px 0px rgba(0, 0, 0, 0.5)' }}
+          >
+            Projects?
+          </h1>
+          <h1 className="pt-40 text-2xl font-[Keania_One] text-off-white">I got a few</h1>
+        </div>
       </div>
     </div>
 
