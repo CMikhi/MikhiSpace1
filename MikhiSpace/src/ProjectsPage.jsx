@@ -191,7 +191,12 @@ function ProjectsPage() {
           <h1 className="pt-40 text-2xl font-[Keania_One] text-off-white">I got a few</h1>
         </div>
       </div>
+      <div className='w-screen min-h-screen bg-medium-dark-red flex justify-center items-center'>
+
+      </div>
+      
     </div>
+
 
   )
 }
