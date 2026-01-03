@@ -78,7 +78,7 @@ function ProjectsPage() {
   }, [])
 
   return (
-    <div className="h-screen overflow-y-auto">
+    <div className="h-screen overflow-y-auto overflow-x-hidden">
       <div className="relative w-screen min-h-screen bg-off-white text-dark-red flex justify-between">
         {/* Top design lines */}
         <div className="w-3 h-15 left-40 bg-dark-red absolute" />
@@ -180,19 +180,41 @@ function ProjectsPage() {
           `}</style>
         </div>
 
-      <div className="relative w-screen min-h-screen bg-medium-light-red"> 
+        {/* Projects section */}
+
+      <div className="relative h-100 w-screen bg-medium-light-red pl-10"> 
         <div>
           <h1 
-            className="pt-40 text-8xl font-[Keania_One] text-off-white"
+            className="pt-25  text-8xl font-[Keania_One] text-off-white"
             style={{ textShadow: '-8px 8px 0px rgba(0, 0, 0, 0.5)' }}
           >
             Projects?
           </h1>
-          <h1 className="pt-40 text-2xl font-[Keania_One] text-off-white">I got a few</h1>
+          <h1 className="pt-10 text-2xl font-[Keania_One] text-off-white">I got a few</h1>
         </div>
       </div>
-      <div className='w-screen min-h-screen bg-medium-dark-red flex justify-center items-center'>
 
+      <div className='w-screen min-h-screen bg-medium-dark-red'>
+            {/* <div className='flex justify-between'>
+              <img className=" " src='src/assets/ProjectsPage/Airplane 1.svg'/>
+              <img className=" -mr-[35px]" src='src/assets/ProjectsPage/Paper 2.svg'/>
+            </div> */}
+           
+            <div className='w-90 h-120 bg-off-white rounded-md flex flex-col drop-shadow-xl/25 '>
+              <div className='w-85 h-40 bg-dark-red rounded-md flex mx-auto mt-2'></div>
+              <h1 className='text-medium-dark-red text-3xl font-[Keania_One] ml-5 mt-2'>Project 1</h1>
+            </div>
+            
+            {/* <div className='flex justify-between'>
+              <img className="pt-50" src='src/assets/ProjectsPage/Paper 3.svg'/>
+              <img className="pt-10" src='src/assets/ProjectsPage/Airplane 2.svg'/>
+
+            </div> */}
+            
+            
+
+
+            
       </div>
       
     </div>
