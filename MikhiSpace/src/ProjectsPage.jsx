@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import ProjectCard from './components/ProjectCard'
 
 // Animation configuration constants
 const TYPING_ANIMATIONS = [
@@ -200,10 +201,14 @@ function ProjectsPage() {
               <img className=" -mr-[35px]" src='src/assets/ProjectsPage/Paper 2.svg'/>
             </div> */}
            
-            <div className='w-90 h-120 bg-off-white rounded-md flex flex-col drop-shadow-xl/25 '>
-              <div className='w-85 h-40 bg-dark-red rounded-md flex mx-auto mt-2'></div>
-              <h1 className='text-medium-dark-red text-3xl font-[Keania_One] ml-5 mt-2'>Project 1</h1>
-            </div>
+            <ProjectCard 
+              title="Project 1"
+              details="[insert details here]"
+              techIcons={[
+                { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
+                { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
+              ]}
+            />
             
             {/* <div className='flex justify-between'>
               <img className="pt-50" src='src/assets/ProjectsPage/Paper 3.svg'/>
