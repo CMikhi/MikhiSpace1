@@ -350,6 +350,8 @@ function ProjectsPage() {
 
 
               <div className='flex gap-20 mx-auto '>
+
+                {/* ShutterBug */}
                 <div 
                   className={`card-wrapper -rotate-4 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                   style={{ transitionDelay: '0ms' }}
@@ -365,6 +367,7 @@ function ProjectsPage() {
                   />
                 </div>
                 
+                {/* COB Traffic */}
                 <div 
                   className={`card-wrapper mt-35 rotate-3 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                   style={{ transitionDelay: '150ms' }}
@@ -380,6 +383,7 @@ function ProjectsPage() {
                   />
                 </div>
                 
+                {/* Desktop Widgets */}
                 <div 
                   className={`card-wrapper mt-70 -rotate-2 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
                   style={{ transitionDelay: '300ms' }}
@@ -390,11 +394,13 @@ function ProjectsPage() {
                   details="[insert details here]"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                    { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
+                    { src: 'src/assets/ComponentPhotos/ElectronBlock.svg', alt: 'Electron', height: 10 },
                   ]}
                   />
                 </div>
               </div>
+
+
               <div className='flex gap-20 mb-20 mx-auto'>
                 <div 
                   className={`card-wrapper mt-55 rotate-2 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
