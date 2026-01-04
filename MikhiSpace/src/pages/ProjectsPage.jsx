@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import ProjectCard from './components/ProjectCard'
-import './styles/ProjectsPage.css'
+import ProjectCard from '../components/ProjectCard'
+import '../styles/ProjectsPage.css'
 
 // Animation configuration constants
 const TYPING_ANIMATIONS = [
