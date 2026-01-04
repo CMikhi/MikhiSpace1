@@ -15,7 +15,7 @@ function ProjectCard({ title, details, techIcons = [], index = 0 }) {
         <h1 className='text-medium-dark-red text-3xl font-[Keania_One] ml-5 mt-2'>{title}</h1>
         
         {/* Project details */}
-        <p className='text-medium-dark-red text-lg font-[Kdam_Thmor_Pro] ml-5 mt-2 leading-relaxed'>{details}</p>
+        <p className='text-medium-dark-red text-lg font-[Kdam_Thmor_Pro] ml-5 mt-2'>{details}</p>
 
         {/* Tech stack icons */}
         <div className='mt-auto mb-4 flex ml-4 gap-2'>
