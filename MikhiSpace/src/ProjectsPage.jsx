@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import ProjectCard from './components/ProjectCard'
+import './styles/ProjectsPage.css'
 
 // Animation configuration constants
 const TYPING_ANIMATIONS = [
@@ -195,30 +196,76 @@ function ProjectsPage() {
         </div>
       </div>
 
-      <div className='w-screen min-h-screen bg-medium-dark-red'>
-            {/* <div className='flex justify-between'>
-              <img className=" " src='src/assets/ProjectsPage/Airplane 1.svg'/>
-              <img className=" -mr-[35px]" src='src/assets/ProjectsPage/Paper 2.svg'/>
-            </div> */}
-           
-            <ProjectCard 
-              title="Project 1"
-              details="[insert details here]"
-              techIcons={[
-                { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
-              ]}
-            />
+      <div className='relative w-screen min-h-screen bg-medium-dark-red py-20 overflow-hidden'>
             
-            {/* <div className='flex justify-between'>
-              <img className="pt-50" src='src/assets/ProjectsPage/Paper 3.svg'/>
-              <img className="pt-10" src='src/assets/ProjectsPage/Airplane 2.svg'/>
+            {/* ====== DECORATIVE LAYER (doesn't block clicks) ====== */}
+            <div className="absolute inset-0 pointer-events-none z-10">
+              {/* Paper airplane decorations */}
+              <img 
+                className="absolute top-10 left-0 w-[50%] max-w-[600px] opacity-80" 
+                src='src/assets/ProjectsPage/Airplane 1.svg'
+                alt=""
+              />
+              <img 
+                className="absolute bottom-20 right-0 w-[40%] max-w-[500px] opacity-80" 
+                src='src/assets/ProjectsPage/Airplane 2.svg'
+                alt=""
+              />
+              {/* Decorative paper pieces */}
+              <img 
+                className="absolute top-0 right-0 w-[25%] max-w-[350px] opacity-70" 
+                src='src/assets/ProjectsPage/Paper 2.svg'
+                alt=""
+              />
+              <img 
+                className="absolute bottom-0 left-0 w-[25%] max-w-[350px] opacity-70" 
+                src='src/assets/ProjectsPage/Paper 3.svg'
+                alt=""
+              />
+            </div>
 
-            </div> */}
-            
-            
+            {/* ====== PROJECT CARDS ZIGZAG CONTAINER ====== */}
+            <div className="projects-zigzag relative z-20 flex flex-col items-center pt-20">
+              <ProjectCard
+                index={0}
+                title="Project 1"
+                details="[insert details here]"
+                techIcons={[
+                  { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
+                  { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
+                ]}
+              />
+              
+              <ProjectCard
+                index={1}
+                title="Project 2"
+                details="[insert details here]"
+                techIcons={[
+                  { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
+                  { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
+                ]}
+              />
 
+              <ProjectCard
+                index={2}
+                title="Project 3"
+                details="[insert details here]"
+                techIcons={[
+                  { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
+                  { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
+                ]}
+              />
 
+              <ProjectCard
+                index={3}
+                title="Project 4"
+                details="[insert details here]"
+                techIcons={[
+                  { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
+                  { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
+                ]}
+              />
+            </div>
             
       </div>
       
