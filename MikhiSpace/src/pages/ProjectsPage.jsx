@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
 import '../styles/ProjectsPage.css'
 
@@ -51,6 +52,7 @@ const createFloatingAnimation = (ref, { translateY, rotate, duration }) => {
 }
 
 function ProjectsPage() {
+  const navigate = useNavigate()
   const [cardsVisible, setCardsVisible] = useState(false)
   const projectsSectionRef = useRef(null)
   const projectsHeaderRef = useRef(null)
@@ -222,11 +224,15 @@ function ProjectsPage() {
             <div className="w-3 mt-10 h-40 left-140 bg-dark-red absolute" />
           </div>
 
-          {/* Hobby Files - TODO: Make this functional */}
+          {/* Hobby Files - Clickable to navigate to hobbies page */}
           <img
-            className="pt-3 absolute top-90 ml-20"
+            className="pt-3 absolute top-90 ml-20 cursor-pointer hover:scale-105 transition-transform duration-300 hover:drop-shadow-xl"
             src="src/assets/Hobbies File.svg"
             alt="Hobbies File"
+            onClick={() => navigate('/hobbies')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && navigate('/hobbies')}
           />
         </div>
 

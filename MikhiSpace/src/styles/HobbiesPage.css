@@ -1,0 +1,60 @@
+/* ====== HOBBIES PAGE STYLES ====== */
+
+.hobby-tab {
+  min-width: 150px;
+  text-align: center;
+  position: relative;
+}
+
+.hobby-tab:first-child {
+  min-width: 120px;
+}
+
+/* Polaroid frame styling */
+.polaroid-frame {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s ease,
+              z-index 0s;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.1) !important;
+  z-index: 100 !important;
+}
+
+.polaroid-inner {
+  border-radius: 2px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+              0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.polaroid-frame:hover .polaroid-inner {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+              0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Hobby title styling */
+.hobby-title {
+  text-shadow: -6px 6px 0px rgba(0, 0, 0, 0.4);
+  animation: title-float 4s ease-in-out infinite;
+}
+
+@keyframes title-float {
+  0%, 100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  50% {
+    transform: translateY(-50%) translateX(-5px);
+  }
+}
+
+/* Tab underline indicator */
+.hobby-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--color-off-white);
+}
