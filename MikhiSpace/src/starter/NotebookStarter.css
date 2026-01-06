@@ -1,0 +1,448 @@
+/**
+ * ╔═══════════════════════════════════════════════════════════════════╗
+ * ║           🎨 NOTEBOOK AESTHETIC STYLESHEET                        ║
+ * ║              Easy to customize! Just edit below                   ║
+ * ╚═══════════════════════════════════════════════════════════════════╝
+ */
+
+/* ═══════════════════════════════════════════════════════════════════
+   🎨 COLOR PALETTE - Change these to customize your theme!
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Primary Colors (Your red theme!) */
+  --notebook-black: #000000;
+  --notebook-dark: #220B0D;
+  --notebook-medium-dark: #45171C;
+  --notebook-medium: #6A232B;
+  --notebook-light: #8F2F3A;
+  
+  /* Accent Colors */
+  --notebook-cream: #FDF8F3;
+  --notebook-off-white: #D5D5D5;
+  --notebook-paper: #FFFEF9;
+  --notebook-line: rgba(106, 35, 43, 0.15);
+  
+  /* Text Colors */
+  --notebook-text-dark: #2D1F1F;
+  --notebook-text-muted: #6B5A5A;
+  
+  /* Shadows */
+  --notebook-shadow-soft: 0 2px 8px rgba(34, 11, 13, 0.1);
+  --notebook-shadow-medium: 0 4px 16px rgba(34, 11, 13, 0.15);
+  --notebook-shadow-hover: 0 8px 24px rgba(143, 47, 58, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📄 PAGE LAYOUT
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Override global overflow:hidden for this page */
+.notebook-page {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--notebook-cream) 0%,
+    var(--notebook-paper) 50%,
+    var(--notebook-cream) 100%
+  );
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+  height: 100vh;
+}
+
+/* Force scrolling on html/body when notebook page is active */
+html:has(.notebook-page),
+body:has(.notebook-page) {
+  overflow: auto !important;
+  height: auto !important;
+}
+
+/* Paper texture overlay */
+.notebook-paper-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Decorative notebook lines */
+.notebook-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    transparent 0px,
+    transparent 31px,
+    var(--notebook-line) 31px,
+    var(--notebook-line) 32px
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+/* Main content container */
+.notebook-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  background: var(--notebook-paper);
+  border-radius: 8px;
+  box-shadow: var(--notebook-shadow-medium);
+  padding: 3rem 2.5rem;
+  
+  /* Notebook edge effect */
+  border-left: 4px solid var(--notebook-medium);
+}
+
+/* Back button */
+.notebook-back-button {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--notebook-medium);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.notebook-back-button:hover {
+  color: var(--notebook-medium-dark);
+  transform: translateX(-4px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📝 TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-title {
+  font-family: 'Kiwi Maru', 'Georgia', serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--notebook-dark);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.notebook-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: var(--notebook-text-muted);
+  margin: 0 0 1.5rem 0;
+  font-weight: 400;
+}
+
+.notebook-section-heading {
+  font-family: 'Kiwi Maru', 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--notebook-medium-dark);
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notebook-heading-icon {
+  font-size: 1.2rem;
+}
+
+.notebook-paragraph {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--notebook-text-dark);
+  margin: 0 0 1rem 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📦 SECTIONS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.notebook-section {
+  margin: 2rem 0;
+}
+
+.notebook-demo-box {
+  background: linear-gradient(
+    135deg,
+    var(--notebook-cream) 0%,
+    var(--notebook-paper) 100%
+  );
+  border: 1px dashed var(--notebook-medium);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🃏 CARDS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.notebook-card {
+  background: var(--notebook-paper);
+  border: 1px solid rgba(143, 47, 58, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--notebook-shadow-soft);
+}
+
+.notebook-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--notebook-shadow-hover);
+  border-color: var(--notebook-medium);
+}
+
+.notebook-card-emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.notebook-card-title {
+  font-family: 'Kiwi Maru', 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--notebook-medium-dark);
+  margin: 0 0 0.5rem 0;
+}
+
+.notebook-card-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: var(--notebook-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ➖ DIVIDERS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-divider {
+  height: 1px;
+  background: var(--notebook-medium);
+  margin: 2rem 0;
+  opacity: 0.3;
+}
+
+.notebook-divider-dashed {
+  background: none;
+  border: none;
+  border-top: 2px dashed var(--notebook-medium);
+  opacity: 0.4;
+}
+
+.notebook-divider-dotted {
+  background: none;
+  border: none;
+  border-top: 2px dotted var(--notebook-medium);
+  opacity: 0.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🔘 BUTTONS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-button-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.notebook-button {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notebook-button-primary {
+  background: var(--notebook-medium);
+  color: var(--notebook-off-white);
+}
+
+.notebook-button-primary:hover {
+  background: var(--notebook-medium-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--notebook-shadow-soft);
+}
+
+.notebook-button-secondary {
+  background: transparent;
+  color: var(--notebook-medium);
+  border: 2px solid var(--notebook-medium);
+}
+
+.notebook-button-secondary:hover {
+  background: var(--notebook-medium);
+  color: var(--notebook-off-white);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   🏷️ TAGS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-tags-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.notebook-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.35rem 0.75rem;
+  background: rgba(143, 47, 58, 0.1);
+  color: var(--notebook-medium-dark);
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   👣 FOOTER
+   ═══════════════════════════════════════════════════════════════════ */
+
+.notebook-footer {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.notebook-footer-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: var(--notebook-text-muted);
+  margin: 1rem 0;
+}
+
+.notebook-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.notebook-footer-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  color: var(--notebook-medium);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.notebook-footer-link:hover {
+  color: var(--notebook-medium-dark);
+}
+
+.notebook-footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--notebook-medium);
+  transition: width 0.2s ease;
+}
+
+.notebook-footer-link:hover::after {
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   📱 RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .notebook-container {
+    padding: 2rem 1.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  .notebook-title {
+    font-size: 2rem;
+  }
+  
+  .notebook-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .notebook-button-group {
+    flex-direction: column;
+  }
+  
+  .notebook-button {
+    width: 100%;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ✨ ANIMATIONS (Optional - remove if not needed)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notebook-section {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.notebook-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger card animations */
+.notebook-card:nth-child(1) { animation-delay: 0.1s; }
+.notebook-card:nth-child(2) { animation-delay: 0.2s; }
+.notebook-card:nth-child(3) { animation-delay: 0.3s; }
+.notebook-card:nth-child(4) { animation-delay: 0.4s; }
+.notebook-card:nth-child(5) { animation-delay: 0.5s; }

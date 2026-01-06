@@ -366,6 +366,7 @@ function ProjectsPage() {
                   index={0}
                   title="ShutterBug"
                   details="[insert details here]"
+                  link="/project/shutterbug"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
                     { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
@@ -382,6 +383,7 @@ function ProjectsPage() {
                   index={1}
                   title="COB Traffic"
                   details="[insert details here]"
+                  link="/project/cob-traffic"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
                     { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
@@ -398,6 +400,7 @@ function ProjectsPage() {
                   index={2}
                   title="Desktop Widgets"
                   details="[insert details here]"
+                  link="/project/desktop-widgets"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
                     { src: 'src/assets/ComponentPhotos/ElectronBlock.svg', alt: 'Electron', height: 10 },
@@ -416,6 +419,7 @@ function ProjectsPage() {
                   index={0}
                   title="AeroStream"
                   details="[insert details here]"
+                  link="/project/aerostream"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
                     { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
@@ -431,6 +435,7 @@ function ProjectsPage() {
                   index={1}
                   title="Cloud Board"
                   details="[insert details here]"
+                  link="/project/cloud-board"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
                     { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },

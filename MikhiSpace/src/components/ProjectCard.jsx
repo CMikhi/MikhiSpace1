@@ -1,13 +1,36 @@
+import { useNavigate } from 'react-router-dom'
+
 // Project Card Component
 // Uses CSS custom property (--i) for staircase positioning
-function ProjectCard({ title, details, techIcons = [], index = 0 }) {
+// Props:
+//   - title: Card title
+//   - details: Card description
+//   - techIcons: Array of tech stack icons
+//   - index: For staircase positioning
+//   - link: Route to navigate to on click (optional)
+//   - onClick: Custom click handler (optional)
+function ProjectCard({ title, details, techIcons = [], index = 0, link, onClick }) {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick()
+    } else if (link) {
+      navigate(link)
+    }
+  }
+
   return (
     <div 
       className="project-card"
       style={{ '--i': index }}
+      onClick={handleClick}
+      role={link || onClick ? "button" : undefined}
+      tabIndex={link || onClick ? 0 : undefined}
+      onKeyDown={(e) => (link || onClick) && e.key === 'Enter' && handleClick()}
     >
       {/* Card inner content */}
-      <div className='w-full h-full bg-off-white rounded-md flex flex-col'>
+      <div className='w-full h-full bg-off-white rounded-md flex flex-col cursor-pointer hover:shadow-lg transition-shadow duration-300'>
         {/* Project image/preview area */}
         <div className='w-[95%] h-40 bg-dark-red rounded-md mx-auto mt-2'></div>
         
