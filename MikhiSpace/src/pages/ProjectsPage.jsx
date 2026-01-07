@@ -365,7 +365,8 @@ function ProjectsPage() {
                   <ProjectCard
                   index={0}
                   title="ShutterBug"
-                  details="[insert details here]"
+                  details="It is a mobile app that uses computer vision to identify different photos of insects and provide information about them to the user.
+                   Information is saved to a database where the user can look back upon on a future day."
                   link="/project/shutterbug"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
@@ -382,7 +383,7 @@ function ProjectsPage() {
                   <ProjectCard
                   index={1}
                   title="COB Traffic"
-                  details="[insert details here]"
+                  details="Worked with a team of 3 and the CoB Traffic Commity to create a MML model to optimize traffic timing along the 102 corridor."
                   link="/project/cob-traffic"
                   techIcons={[
                     { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },

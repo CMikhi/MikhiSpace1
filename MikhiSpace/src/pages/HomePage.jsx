@@ -23,22 +23,24 @@ function HomePage() {
     let typingAnimation = null
     if (h1Ref.current && window.anime) {
       h1Ref.current.textContent = ''
+      h1Ref.current.style.fontFamily = '"Kdam Thmor Pro", sans-serif'
       
       typingAnimation = window.anime({
-        targets: { progress: 0 },
-        progress: [0, fullText.length],
-        duration: 8000,
-        easing: 'linear',
-        round: 1,
-        update: function(anim) {
-          const charCount = Math.round(anim.progress)
-          if (h1Ref.current) {
-            h1Ref.current.textContent = fullText.substring(0, charCount)
-          }
-        },
-        delay: 300
+      targets: { progress: 0 },
+      progress: [0, fullText.length],
+      duration: 8000,
+      easing: 'linear',
+      round: 1,
+      update: function(anim) {
+        const charCount = Math.round(anim.progress)
+        if (h1Ref.current) {
+        h1Ref.current.textContent = fullText.substring(0, charCount)
+        }
+      },
+      delay: 300
       })
     }
+
 
     // Cleanup animation on unmount
     return () => {
