@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
+import { projectsData } from '../data/projectsData'
 import '../styles/ProjectsPage.css'
 
 // Animation configuration constants
@@ -354,101 +355,46 @@ function ProjectsPage() {
 
             <div className="relative z-20 flex flex-col pt-40">
 
-
-              <div className='flex gap-20 mx-auto '>
-
-                {/* ShutterBug */}
-                <div 
-                  className={`card-wrapper -rotate-4 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                  style={{ transitionDelay: '0ms' }}
-                >
-                  <ProjectCard
-                  index={0}
-                  title="ShutterBug"
-                  details="It is a mobile app that uses computer vision to identify different photos of insects and provide information about them to the user.
-                   Information is saved to a database where the user can look back upon on a future day."
-                  link="/project/shutterbug"
-                  techIcons={[
-                    { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                    { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
-                  ]}
-                  />
-                </div>
-                
-                {/* COB Traffic */}
-                <div 
-                  className={`card-wrapper mt-35 rotate-3 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                  style={{ transitionDelay: '150ms' }}
-                >
-                  <ProjectCard
-                  index={1}
-                  title="COB Traffic"
-                  details="Worked with a team of 3 and the CoB Traffic Commity to create a MML model to optimize traffic timing along the 102 corridor."
-                  link="/project/cob-traffic"
-                  techIcons={[
-                    { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                    { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
-                  ]}
-                  />
-                </div>
-                
-                {/* Desktop Widgets */}
-                <div 
-                  className={`card-wrapper mt-70 -rotate-2 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                  style={{ transitionDelay: '300ms' }}
-                >
-                  <ProjectCard
-                  index={2}
-                  title="Desktop Widgets"
-                  details="[insert details here]"
-                  link="/project/desktop-widgets"
-                  techIcons={[
-                    { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                    { src: 'src/assets/ComponentPhotos/ElectronBlock.svg', alt: 'Electron', height: 10 },
-                  ]}
-                  />
-                </div>
+              {/* First Row - 3 cards */}
+              <div className='flex gap-20 mx-auto'>
+                {projectsData.slice(0, 3).map((project) => (
+                  <div 
+                    key={project.id}
+                    className={`card-wrapper ${project.marginTop} ${project.className} transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                    style={{ transitionDelay: project.delay }}
+                  >
+                    <ProjectCard
+                      index={project.index}
+                      title={project.title}
+                      details={project.details}
+                      link={project.link}
+                      techIcons={project.techIcons}
+                    />
+                  </div>
+                ))}
               </div>
 
-
+              {/* Second Row - 2 cards + spacer */}
               <div className='flex gap-20 mb-20 mx-auto'>
-                <div 
-                  className={`card-wrapper mt-55 rotate-2 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                  style={{ transitionDelay: '450ms' }}
-                >
-                  <ProjectCard
-                  index={0}
-                  title="AeroStream"
-                  details="[insert details here]"
-                  link="/project/aerostream"
-                  techIcons={[
-                    { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                    { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
-                  ]}
-                  />
-                </div>
+                {projectsData.slice(3, 5).map((project) => (
+                  <div 
+                    key={project.id}
+                    className={`card-wrapper ${project.marginTop} ${project.className} transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
+                    style={{ transitionDelay: project.delay }}
+                  >
+                    <ProjectCard
+                      index={project.index}
+                      title={project.title}
+                      details={project.details}
+                      link={project.link}
+                      techIcons={project.techIcons}
+                    />
+                  </div>
+                ))}
                 
-                <div 
-                  className={`card-wrapper mt-20 -rotate-4 transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}
-                  style={{ transitionDelay: '600ms' }}
-                >
-                  <ProjectCard
-                  index={1}
-                  title="Cloud Board"
-                  details="[insert details here]"
-                  link="/project/cloud-board"
-                  techIcons={[
-                    { src: 'src/assets/ComponentPhotos/PythonBlock.svg', alt: 'Python', height: 10 },
-                    { src: 'src/assets/ComponentPhotos/ReactNatBlock.svg', alt: 'React Native', height: 12 },
-                  ]}
-                  />
-                </div>
-                
-                <div className='w-[400px] h-[480px]'>
-                  
-                </div>
+                {/* Spacer for layout */}
+                <div className='w-[400px] h-[480px]' />
               </div>
-              
               
             </div>
             
